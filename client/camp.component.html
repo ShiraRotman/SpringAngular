@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <label for="campaignNameLabel" class="col-6">Campaign:</label>
+        <label id="campaignNameLabel" class="col-6">{{campaign.name}}</label>
+    </div>
+    <div class="row">
+        <label for="startDateLabel" class="col-6">Start Date:</label>
+        <label id="startDateLabel" class="col-6">{{campaign.startdate | date:"dd/MM/yyyy"}}</label>
+    </div>
+    <div class="row">
+        <label for="endDateLabel" class="col-6">End Date:</label>
+        <label id="endDateLabel" class="col-6">{{campaign.enddate | date:"dd/MM/yyyy"}}</label>
+    </div>
+</div>

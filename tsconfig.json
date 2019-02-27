@@ -2,8 +2,8 @@
     "compileOnSave": false,
     "compilerOptions":
     {
-        "baseUrl": "/",
-        "outDir": "out/angular",
+        "baseUrl": "./",
+        "outDir": "target/angular",
         "sourceMap": true,
         "declaration": false,
         "moduleResolution": "node",
