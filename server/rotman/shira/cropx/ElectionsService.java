@@ -1,8 +1,11 @@
 package rotman.shira.cropx;
 
 import java.security.Principal;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +24,13 @@ public class ElectionsService
 
     @GetMapping("/user")
     public Principal authUser(Principal user) { return user; }
+
+    @GetMapping("/campaigns")
+    public Object[] getAllCampaigns()
+    {
+        Query query=entityManager.createQuery("select ec from ElectionsCampaign ec");
+        return query.getResultList().toArray();
+    }
 
     @GetMapping("/campaign")
     public ElectionsCampaign getCampaign()

@@ -11,7 +11,7 @@ export class LoginComponent
     authFailed=false;
 
     constructor(private http: HttpClient,private router: Router,private service:
-            ElectionsService) { this.login(); }
+            ElectionsService) { }
 
     login()
     {
@@ -31,8 +31,7 @@ export class LoginComponent
                 this.service.authHeaders=headers;
                 this.router.navigateByUrl('/campaigns');
             }
-            else if (Object.getOwnPropertyNames(this.service.authHeaders).length>0)
-                this.service.authHeaders=new HttpHeaders({ });
+            else if (this.service.authenticated()) this.service.invalidate();
         });
     }
 }

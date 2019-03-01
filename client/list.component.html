@@ -1,0 +1,21 @@
+<div>
+    <div><h2 class="text-center">List of Campaigns</h2></div>
+    <div class="row justify-content-center">
+        <table class="table table-hover" style="cursor:pointer;">
+            <thead>
+                <tr class="table-header">
+                    <th class="w-50">Campaign Name</th>
+                    <th class="w-25 text-center">Start Date</th>
+                    <th class="w-25 text-center">End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let campaign of campaigns">
+                    <td>{{campaign.campaignName}}</td>
+                    <td class="text-center">{{campaign.startDate | date:"dd/MM/yyyy HH:mm:ss"}}</td>
+                    <td class="text-center">{{campaign.endDate | date:"dd/MM/yyyy HH:mm:ss"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
