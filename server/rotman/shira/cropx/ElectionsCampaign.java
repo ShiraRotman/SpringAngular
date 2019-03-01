@@ -6,15 +6,15 @@ import javax.persistence.*;
 @Entity @Table(name="campaigns")
 public class ElectionsCampaign
 {
-    private Long campaignID;
+    private Integer campaignID;
     private String campaignName;
     private Date startDate;
     private Date endDate;
 
     @Id @Column(name="campaign_id") @GeneratedValue
-    public Long getCampaignID() { return campaignID; }
+    public Integer getCampaignID() { return campaignID; }
 
-    public void setCampaignID(Long campaignID)
+    public void setCampaignID(Integer campaignID)
     { this.campaignID=campaignID; }
 
     @Column(name="campaign_name")

@@ -39,7 +39,9 @@ class AppSecurityConfigurer extends WebSecurityConfigurerAdapter
     @Override protected void configure(AuthenticationManagerBuilder builder) throws Exception
     {
         builder.jdbcAuthentication().dataSource(dataSource).passwordEncoder(
-                NoOpPasswordEncoder.getInstance());
+                NoOpPasswordEncoder.getInstance()).authoritiesByUsernameQuery(
+                "select username,authority from users inner join authorities on users.user_id=" +
+                "authorities.user_id where username=?");
     }
 
     @Override protected void configure(HttpSecurity security) throws Exception

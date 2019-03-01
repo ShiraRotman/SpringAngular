@@ -26,3 +26,15 @@ CREATE TABLE public.authorities (
     NOT DEFERRABLE
 )
 WITH (oids = false);
+
+ALTER TABLE public.campaigns ALTER COLUMN campaign_id TYPE INTEGER;
+ALTER TABLE public.authorities DROP CONSTRAINT authorities_username_fkey RESTRICT;
+ALTER TABLE public.authorities DROP CONSTRAINT authorities_pkey RESTRICT;
+ALTER TABLE public.authorities ADD COLUMN authority_id BIGINT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY;
+ALTER TABLE public.users DROP CONSTRAINT users_pkey RESTRICT;
+ALTER TABLE public.users ADD COLUMN user_id INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY;
+ALTER TABLE public.users ADD UNIQUE (username);
+ALTER TABLE public.authorities RENAME COLUMN username TO user_id;
+ALTER TABLE public.authorities ALTER COLUMN user_id TYPE INTEGER USING 0;
+ALTER TABLE public.authorities ADD CONSTRAINT authorities_fk FOREIGN KEY (user_id)
+    REFERENCES public.users(user_id) ON DELETE CASCADE ON UPDATE RESTRICT NOT DEFERRABLE;
