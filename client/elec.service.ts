@@ -5,11 +5,11 @@ import { environment } from './environment';
 @Injectable({providedIn: 'root'})
 export class ElectionsService
 {
-    authHeaders: HttpHeaders=new HttpHeaders({ });
+    authHeaders: HttpHeaders=new HttpHeaders({ }); selectedCamp=null;
     invalidate() { this.authHeaders=new HttpHeaders({ }); }
 
     authenticated(): Boolean
-    { return Object.getOwnPropertyNames(this.authHeaders).length>0; }
+    { return this.authHeaders.keys().length>0; }
 
     getFullAddress(path: string): string
     { return `http://localhost:${environment.serverport}/${path}`; }

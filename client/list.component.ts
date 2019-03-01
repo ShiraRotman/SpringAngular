@@ -18,4 +18,10 @@ export class CampListComponent
                     subscribe(data=>this.campaigns=data);
         }
     }
+
+    campClicked(campaign)
+    {
+        this.service.selectedCamp=campaign;
+        this.router.navigateByUrl('/campaign');
+    }
 }

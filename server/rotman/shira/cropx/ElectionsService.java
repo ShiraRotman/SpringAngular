@@ -32,10 +32,6 @@ public class ElectionsService
         return query.getResultList().toArray();
     }
 
-    @GetMapping("/campaign")
-    public ElectionsCampaign getCampaign()
-    { return entityManager.find(ElectionsCampaign.class,1L); }
-
     public static void main(String[] args)
     { SpringApplication.run(ElectionsService.class,args); }
 }

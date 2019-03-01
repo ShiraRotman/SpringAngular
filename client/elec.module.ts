@@ -13,7 +13,8 @@ const routes: Routes=
 [
     { path: '',pathMatch: 'full',redirectTo: 'login' },
     { path: 'login',component: LoginComponent },
-    { path: 'campaigns',component: CampListComponent }
+    { path: 'campaigns',component: CampListComponent },
+    { path: 'campaign',component: CampComponent }
 ]
 
 @NgModule

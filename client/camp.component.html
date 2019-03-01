@@ -1,14 +1,48 @@
-<div class="container">
-    <div class="row">
-        <label for="campaignNameLabel" class="col-6">Campaign:</label>
-        <label id="campaignNameLabel" class="col-6">{{campaign.campaignName}}</label>
+<form class="w-100">
+    <div class="form-row justify-content-center">
+        <label for="campaignNameLabel" class="col-2">Campaign:</label>
+        <label id="campaignNameLabel" class="col-3">{{campaign.campaignName}}</label>
     </div>
-    <div class="row">
-        <label for="startDateLabel" class="col-6">Start Date:</label>
-        <label id="startDateLabel" class="col-6">{{campaign.startDate | date:"dd/MM/yyyy"}}</label>
+    <div class="form-row justify-content-center">
+        <label for="startDateLabel" class="col-2">Start Date:</label>
+        <label id="startDateLabel" class="col-3">
+            {{campaign.startDate | date:"dd/MM/yyyy HH:mm:ss"}}
+        </label>
     </div>
-    <div class="row">
-        <label for="endDateLabel" class="col-6">End Date:</label>
-        <label id="endDateLabel" class="col-6">{{campaign.endDate | date:"dd/MM/yyyy"}}</label>
+    <div class="form-row justify-content-center">
+        <label for="endDateLabel" class="col-2">End Date:</label>
+        <label id="endDateLabel" class="col-3">
+            {{campaign.endDate | date:"dd/MM/yyyy HH:mm:ss"}}
+        </label>
     </div>
-</div>
+
+    <div class="form-row justify-content-center">
+        <table class="table">
+            <thead>
+                <tr class="table-header">
+                    <th class="w-25 text-center">Place</th>
+                    <th class="w-50">User</th>
+                    <th class="w-25 text-center">Votes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let leader of leaders">
+                    <td class="text-center">{{leader.place}}</td>
+                    <td>{{leader.username}}</td>
+                    <td class="text-center">{{leader.votes}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-row justify-content-center">
+        <label for="userVoteInput" class="col-2">Your Vote:</label>
+        <div class="col-3">
+            <input id="userVoteInput" type="text" class="form-control" name="vote" [(ngModel)]="userVote"/>
+        </div>
+    </div>
+    <div class="form-row justify-content-around">
+        <input type="submit" class="btn btn-primary" value="Vote!"/>
+        <input type="button" class="btn btn-secondary" value="Back"/>
+    </div>
+</form>

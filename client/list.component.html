@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let campaign of campaigns">
+                <tr *ngFor="let campaign of campaigns" (click)="campClicked(campaign)">
                     <td>{{campaign.campaignName}}</td>
                     <td class="text-center">{{campaign.startDate | date:"dd/MM/yyyy HH:mm:ss"}}</td>
                     <td class="text-center">{{campaign.endDate | date:"dd/MM/yyyy HH:mm:ss"}}</td>
