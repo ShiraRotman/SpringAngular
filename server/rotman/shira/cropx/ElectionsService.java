@@ -1,5 +1,6 @@
 package rotman.shira.cropx;
 
+import java.security.Principal;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -18,7 +19,10 @@ public class ElectionsService
 {
     @PersistenceContext private EntityManager entityManager;
 
-    @GetMapping("campaign")
+    @GetMapping("/user")
+    public Principal authUser(Principal user) { return user; }
+
+    @GetMapping("/campaign")
     public ElectionsCampaign getCampaign()
     { return entityManager.find(ElectionsCampaign.class,1L); }
 
