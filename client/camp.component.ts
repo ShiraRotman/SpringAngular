@@ -16,6 +16,20 @@ export class CampComponent
         {
             this.campaign=service.selectedCamp;
             service.selectedCamp=null;
+            http.get(service.getFullAddress(`leaders?campaign=${this.campaign.campaignID}`),
+                    {headers: service.authHeaders}).subscribe(data=>
+            {
+                this.leaders=data;
+                for (let index=0;index<this.leaders.length;index++)
+                {
+                    this.leaders[index]=
+                    {
+                        place: index+1,
+                        username: data[index][0],
+                        votes: data[index][1]
+                    }
+                }
+            });
         }
     }
 }

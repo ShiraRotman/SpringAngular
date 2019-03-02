@@ -14,24 +14,26 @@ public class ElectionsCampaign
     @Id @Column(name="campaign_id") @GeneratedValue
     public Integer getCampaignID() { return campaignID; }
 
-    public void setCampaignID(Integer campaignID)
+    private void setCampaignID(Integer campaignID)
     { this.campaignID=campaignID; }
 
-    @Column(name="campaign_name")
+    @Column(name="campaign_name",nullable=false)
     public String getCampaignName() { return campaignName; }
 
-    public void setCampaignName(String campaignName)
+    private void setCampaignName(String campaignName)
     { this.campaignName=campaignName; }
 
-    @Temporal(TemporalType.DATE) @Column(name="start_date")
+    @Temporal(TemporalType.DATE)
+    @Column(name="start_date",nullable=false)
     public Date getStartDate() { return startDate; }
 
-    public void setStartDate(Date startDate)
+    private void setStartDate(Date startDate)
     { this.startDate=startDate; }
 
-    @Temporal(TemporalType.DATE) @Column(name="end_date")
+    @Temporal(TemporalType.DATE)
+    @Column(name="end_date",nullable=false)
     public Date getEndDate() { return endDate; }
 
-    public void setEndDate(Date endDate)
+    private void setEndDate(Date endDate)
     { this.endDate=endDate; }
 }

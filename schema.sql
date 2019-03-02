@@ -38,3 +38,21 @@ ALTER TABLE public.authorities RENAME COLUMN username TO user_id;
 ALTER TABLE public.authorities ALTER COLUMN user_id TYPE INTEGER USING 0;
 ALTER TABLE public.authorities ADD CONSTRAINT authorities_fk FOREIGN KEY (user_id)
     REFERENCES public.users(user_id) ON DELETE CASCADE ON UPDATE RESTRICT NOT DEFERRABLE;
+
+CREATE TABLE public.votes (
+  vote_id BIGINT NOT NULL,
+  campaign_id INTEGER NOT NULL,
+  user_id INTEGER NOT NULL,
+  voted_user_id INTEGER NOT NULL,
+  PRIMARY KEY(vote_id)
+)
+WITH (oids = false);
+
+ALTER TABLE public.votes ADD CONSTRAINT votes_fk FOREIGN KEY (campaign_id) REFERENCES public.campaigns(campaign_id)
+    ON DELETE RESTRICT ON UPDATE RESTRICT NOT DEFERRABLE;
+ALTER TABLE public.votes ADD CONSTRAINT votes_fk1 FOREIGN KEY (user_id) REFERENCES public.users(user_id)
+    ON DELETE RESTRICT ON UPDATE RESTRICT NOT DEFERRABLE;
+ALTER TABLE public.votes ADD CONSTRAINT votes_fk2 FOREIGN KEY (voted_user_id) REFERENCES public.users(user_id)
+    ON DELETE RESTRICT ON UPDATE RESTRICT NOT DEFERRABLE;
+ALTER TABLE public.votes ADD CONSTRAINT votes_ukey UNIQUE (campaign_id, user_id, voted_user_id) NOT DEFERRABLE;
+ALTER TABLE public.votes ALTER COLUMN vote_id ADD GENERATED ALWAYS AS IDENTITY;
