@@ -6,7 +6,7 @@ import { ElectionsService } from './elec.service';
 
 export class CampComponent
 {
-    campaign=null; leaders=null; userVote=null;
+    campaign=null; leaders=null; userVote=null; failed=false;
     constructor(private router: Router,private service: ElectionsService)
     {
         if (!service.authenticated()) router.navigateByUrl('/login');
@@ -30,5 +30,12 @@ export class CampComponent
                 }
             });
         }
+    }
+
+    vote()
+    {
+        //const voteParams=`?campaign=${this.campaign.campaignID}&foruser=${this.userVote}`;
+        const voteParams={ campaign: this.campaign.campaignID, foruser: this.userVote };
+        this.service.sendPostRequest('vote',voteParams,data=>this.failed=(data==null));
     }
 }

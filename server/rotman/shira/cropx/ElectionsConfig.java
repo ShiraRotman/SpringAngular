@@ -46,8 +46,8 @@ class AppSecurityConfigurer extends WebSecurityConfigurerAdapter
 
     @Override protected void configure(HttpSecurity security) throws Exception
     {
-        security.cors().and().httpBasic().and().authorizeRequests().antMatchers("/","/user").
-                permitAll().anyRequest().authenticated();
+        security.cors().and().csrf().disable().httpBasic().and().authorizeRequests().
+                antMatchers("/","/user").permitAll().anyRequest().authenticated();
     }
 
     @Bean public CorsConfigurationSource corsConfigurationSource()

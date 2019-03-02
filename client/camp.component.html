@@ -1,4 +1,4 @@
-<form class="w-100">
+<form class="w-100" (submit)="vote()">
     <div class="form-row justify-content-center">
         <label for="campaignNameLabel" class="col-2">Campaign:</label>
         <label id="campaignNameLabel" class="col-3">{{campaign.campaignName}}</label>
@@ -44,5 +44,8 @@
     <div class="form-row justify-content-around">
         <input type="submit" class="btn btn-primary" value="Vote!"/>
         <input type="button" class="btn btn-secondary" value="Back"/>
+    </div>
+    <div class="alert alert-danger" [hidden]="!failed">
+        There was an error when trying to vote. Please try again.
     </div>
 </form>

@@ -20,4 +20,10 @@ export class ElectionsService
         this.http.get(this.getFullAddress(path),{headers: this.authHeaders}).
                 subscribe(callback);
     }
+
+    sendPostRequest(path: string,body,callback)
+    {
+        const headers=this.authHeaders.set('Content-Type','application/json');
+        this.http.post(this.getFullAddress(path),body,{headers: headers}).subscribe(callback);
+    }
 }
