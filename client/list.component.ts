@@ -12,11 +12,7 @@ export class CampListComponent
             ElectionsService)
     {
         if (!service.authenticated()) router.navigateByUrl('/login');
-        else
-        {
-            http.get(service.getFullAddress('campaigns'),{headers: service.authHeaders}).
-                    subscribe(data=>this.campaigns=data);
-        }
+        else service.sendGetRequest('campaigns',data=>this.campaigns=data);
     }
 
     campClicked(campaign)

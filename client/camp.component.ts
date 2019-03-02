@@ -14,10 +14,10 @@ export class CampComponent
         else if (service.selectedCamp==null) router.navigateByUrl('/campaigns');
         else
         {
-            this.campaign=service.selectedCamp;
-            service.selectedCamp=null;
-            http.get(service.getFullAddress(`leaders?campaign=${this.campaign.campaignID}`),
-                    {headers: service.authHeaders}).subscribe(data=>
+            this.campaign=service.selectedCamp; service.selectedCamp=null;
+            const campaignID=this.campaign.campaignID;
+            service.sendGetRequest(`vote?campaign=${campaignID}`,data=>this.userVote=data[1]);
+            service.sendGetRequest(`leaders?campaign=${campaignID}`,data=>
             {
                 this.leaders=data;
                 for (let index=0;index<this.leaders.length;index++)

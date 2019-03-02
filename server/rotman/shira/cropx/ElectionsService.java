@@ -4,6 +4,7 @@ import java.security.Principal;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -39,8 +40,27 @@ public class ElectionsService
         Query query=entityManager.createQuery("select eu.userName,count(ev.votedUser) as votes from " +
                 "ElectionsVote ev join ev.votedUser eu where ev.campaign=:campaign group by " +
                 "eu.userName order by votes desc");
-        query.setParameter("campaign",campaign); query.setMaxResults(10);
+        query.setParameter("campaign",campaign).setMaxResults(10);
         return query.getResultList().toArray();
+    }
+
+    @GetMapping("/vote")
+    public Object[] getUserVote(Principal user,@RequestParam("campaign") int campaignID)
+    {
+        if (user==null) return null;
+        ElectionsCampaign campaign=entityManager.find(ElectionsCampaign.class,campaignID);
+        if (campaign==null) return null;
+        TypedQuery<ElectionsUser> typedQuery=entityManager.createQuery("select eu from ElectionsUser " +
+                "eu where userName=:username",ElectionsUser.class);
+        typedQuery.setParameter("username",user.getName());
+        ElectionsUser voter=typedQuery.getSingleResult();
+        if (voter==null) return null;
+        Query query=entityManager.createQuery("select euv.userID,euv.userName from ElectionsVote ev " +
+                "join ev.user eu join ev.votedUser euv where ev.user=:user and ev.campaign=:campaign");
+        query.setParameter("campaign",campaign).setParameter("user",voter);
+        Object[] result=(Object[])query.getSingleResult();
+        if (result!=null) return result;
+        else return new Object[] {0,""};
     }
 
     public static void main(String[] args)
