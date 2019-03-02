@@ -16,6 +16,7 @@
         </label>
     </div>
 
+    <div class="alert alert-dark text-center" [hidden]="status==null">{{status}}</div>
     <div class="form-row justify-content-center">
         <table class="table">
             <thead>
@@ -38,11 +39,12 @@
     <div class="form-row justify-content-center">
         <label for="userVoteInput" class="col-2">Your Vote:</label>
         <div class="col-3">
-            <input id="userVoteInput" type="text" class="form-control" name="vote" [(ngModel)]="userVote"/>
+            <input id="userVoteInput" type="text" class="form-control" name="vote"
+               [disabled]="status!=null" [(ngModel)]="userVote"/>
         </div>
     </div>
     <div class="form-row justify-content-around">
-        <input type="submit" class="btn btn-primary" value="Vote!"/>
+        <input type="submit" class="btn btn-primary" value="Vote!" [disabled]="status!=null"/>
         <input type="button" class="btn btn-secondary" value="Back"
            (click)="router.navigateByUrl('/campaigns')"/>
     </div>

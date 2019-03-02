@@ -6,7 +6,7 @@ import { ElectionsService } from './elec.service';
 
 export class CampComponent
 {
-    campaign=null; leaders=null; userVote=null; failed=false;
+    campaign=null; leaders=null; userVote=null; failed=false; status=null;
     constructor(private router: Router,private service: ElectionsService)
     {
         if (!service.authenticated()) router.navigateByUrl('/login');
@@ -14,6 +14,10 @@ export class CampComponent
         else
         {
             this.campaign=service.selectedCamp; service.selectedCamp=null;
+            const now=Date.now(),startDate=Date.parse(this.campaign.startDate);
+            const endDate=Date.parse(this.campaign.endDate);
+            if (startDate>now) this.status='The campaign has not yet started!';
+            else if (endDate<now) this.status='The campaign has ended!';
             this.getVotesData();
         }
     }

@@ -1,5 +1,6 @@
 package rotman.shira.cropx;
 
+import java.util.Date;
 import java.util.List;
 import java.security.Principal;
 
@@ -87,9 +88,13 @@ public class ElectionsService
             else if (userResult.size()==1) votedUser=userResult.get(0);
             else throw new NonUniqueResultException("Duplicate users!");
         }
-
         Object[] dataObjects=getDataObjects(user,voteData.campaign);
         if (dataObjects==null) return null;
+        ElectionsCampaign campaign=(ElectionsCampaign)dataObjects[0];
+        Date now=new Date();
+        if ((campaign.getStartDate().compareTo(now)>0)||(campaign.getEndDate().compareTo(now)<0))
+            return null;
+
         TypedQuery<ElectionsVote> voteQuery=entityManager.createQuery("select ev" +
                 VOTE_PARTIAL_QUERY,ElectionsVote.class);
         voteQuery.setParameter("campaign",dataObjects[0]).setParameter("user",dataObjects[1]);
@@ -107,7 +112,7 @@ public class ElectionsService
             else
             {
                 vote=new ElectionsVote();
-                vote.setCampaign((ElectionsCampaign)dataObjects[0]);
+                vote.setCampaign(campaign);
                 vote.setUser((ElectionsUser)dataObjects[1]);
                 vote.setVotedUser(votedUser);
                 entityManager.persist(vote);
