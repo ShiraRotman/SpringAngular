@@ -95,8 +95,11 @@ public class ElectionsService
         voteQuery.setParameter("campaign",dataObjects[0]).setParameter("user",dataObjects[1]);
         List<ElectionsVote> voteResult=voteQuery.getResultList();
         ElectionsVote vote=null;
-        if ((voteResult!=null)&&(voteResult.size()==1)) vote=voteResult.get(0);
-        else if (voteResult!=null) throw new NonUniqueResultException("Duplicate votes!");
+        if (voteResult!=null)
+        {
+            if (voteResult.size()==1) vote=voteResult.get(0);
+            else if (voteResult.size()>0) throw new NonUniqueResultException("Duplicate votes!");
+        }
 
         if (votedUser!=null)
         {

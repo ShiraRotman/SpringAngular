@@ -9,7 +9,8 @@ public class ElectionsVote
     private ElectionsCampaign campaign;
     private ElectionsUser user,votedUser;
 
-    @Id @GeneratedValue @Column(name="vote_id")
+    @Id @Column(name="vote_id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Long getVoteID() { return voteID; }
 
     private void setVoteID(Long voteID)
