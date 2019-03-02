@@ -1,7 +1,10 @@
 package rotman.shira.cropx;
 
+import java.util.List;
 import java.security.Principal;
+
 import javax.persistence.EntityManager;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -54,13 +57,13 @@ public class ElectionsService
                 "eu where userName=:username",ElectionsUser.class);
         typedQuery.setParameter("username",user.getName());
         ElectionsUser voter=typedQuery.getSingleResult();
-        if (voter==null) return null;
         Query query=entityManager.createQuery("select euv.userID,euv.userName from ElectionsVote ev " +
                 "join ev.user eu join ev.votedUser euv where ev.user=:user and ev.campaign=:campaign");
         query.setParameter("campaign",campaign).setParameter("user",voter);
-        Object[] result=(Object[])query.getSingleResult();
-        if (result!=null) return result;
-        else return new Object[] {0,""};
+        List result=query.getResultList();
+        if ((result==null)||(result.size()==0)) return new Object[] {0,""};
+        else if (result.size()==1) return (Object[])result.get(0);
+        else throw new NonUniqueResultException("Duplicate votes!");
     }
 
     public static void main(String[] args)
