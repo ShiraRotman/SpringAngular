@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7204b993-c93b-4004-af52-2f789043044e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/camp.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/camp.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/camp.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/camp.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsVote.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsVote.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="100" column="97" lean-forward="true" selection-start-line="100" selection-start-column="97" selection-end-line="100" selection-end-column="97" />
+            <state relative-caret-position="272">
+              <caret line="94" column="97" lean-forward="true" selection-start-line="94" selection-start-column="97" selection-end-line="94" selection-end-column="97" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,10 +52,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/camp.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="255">
               <caret line="42" column="45" lean-forward="true" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
             </state>
           </provider>
@@ -128,10 +126,10 @@
         <option value="$PROJECT_DIR$/client/login.component.ts" />
         <option value="$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsConfig.java" />
         <option value="$PROJECT_DIR$/client/elec.service.ts" />
-        <option value="$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsService.java" />
         <option value="$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsVote.java" />
         <option value="$PROJECT_DIR$/client/camp.component.ts" />
         <option value="$PROJECT_DIR$/client/camp.component.html" />
+        <option value="$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsService.java" />
       </list>
     </option>
   </component>
@@ -193,7 +191,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551546279028" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551547591761" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -270,7 +268,7 @@
       <window_info id="Favorites" order="5" sideWeight="0.5036232" side_tool="true" weight="0.21149425" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.39030954" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4993573" visible="true" weight="0.3257066" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4993573" visible="true" weight="0.33916554" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4010767" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -460,16 +458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsCampaign.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/schema.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="358">
@@ -529,16 +517,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="100" column="97" lean-forward="true" selection-start-line="100" selection-start-column="97" selection-end-line="100" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsVote.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -555,8 +533,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/camp.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="255">
           <caret line="42" column="45" lean-forward="true" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsCampaign.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/rotman/shira/cropx/ElectionsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="94" column="97" lean-forward="true" selection-start-line="94" selection-start-column="97" selection-end-line="94" selection-end-column="97" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

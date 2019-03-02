@@ -14,28 +14,36 @@ export class CampComponent
         else
         {
             this.campaign=service.selectedCamp; service.selectedCamp=null;
-            const campaignID=this.campaign.campaignID;
-            service.sendGetRequest(`vote?campaign=${campaignID}`,data=>this.userVote=data[1]);
-            service.sendGetRequest(`leaders?campaign=${campaignID}`,data=>
-            {
-                this.leaders=data;
-                for (let index=0;index<this.leaders.length;index++)
-                {
-                    this.leaders[index]=
-                    {
-                        place: index+1,
-                        username: data[index][0],
-                        votes: data[index][1]
-                    }
-                }
-            });
+            this.getVotesData();
         }
     }
 
     vote()
     {
-        //const voteParams=`?campaign=${this.campaign.campaignID}&foruser=${this.userVote}`;
         const voteParams={ campaign: this.campaign.campaignID, foruser: this.userVote };
-        this.service.sendPostRequest('vote',voteParams,data=>this.failed=(data==null));
+        this.service.sendPostRequest('vote',voteParams,data=>
+        {
+            if (data!=null) { this.failed=false; this.getVotesData(); }
+            else this.failed=true;
+        });
+    }
+
+    private getVotesData()
+    {
+        const campaignID=this.campaign.campaignID;
+        this.service.sendGetRequest(`vote?campaign=${campaignID}`,data=>this.userVote=data[1]);
+        this.service.sendGetRequest(`leaders?campaign=${campaignID}`,data=>
+        {
+            this.leaders=data;
+            for (let index=0;index<this.leaders.length;index++)
+            {
+                this.leaders[index]=
+                {
+                    place: index+1,
+                    username: data[index][0],
+                    votes: data[index][1]
+                }
+            }
+        });
     }
 }

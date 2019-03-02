@@ -43,7 +43,8 @@
     </div>
     <div class="form-row justify-content-around">
         <input type="submit" class="btn btn-primary" value="Vote!"/>
-        <input type="button" class="btn btn-secondary" value="Back"/>
+        <input type="button" class="btn btn-secondary" value="Back"
+           (click)="router.navigateByUrl('/campaigns')"/>
     </div>
     <div class="alert alert-danger" [hidden]="!failed">
         There was an error when trying to vote. Please try again.
