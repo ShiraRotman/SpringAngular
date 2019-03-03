@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -36,10 +36,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 class AppSecurityConfigurer extends WebSecurityConfigurerAdapter
 {
     @Autowired private DataSource dataSource;
+
     @Override protected void configure(AuthenticationManagerBuilder builder) throws Exception
     {
         builder.jdbcAuthentication().dataSource(dataSource).passwordEncoder(
-                NoOpPasswordEncoder.getInstance()).authoritiesByUsernameQuery(
+                new BCryptPasswordEncoder()).authoritiesByUsernameQuery(
                 "select username,authority from users inner join authorities on users.user_id=" +
                 "authorities.user_id where username=?");
     }
