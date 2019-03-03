@@ -23,7 +23,8 @@
                         "index": "client/elections.html",
                         "main": "client/elections.ts",
                         "polyfills": "polyfills.ts",
-                        "tsConfig": "tsconfig.json"
+                        "tsConfig": "tsconfig.json",
+                        "styles": ["styles.css"]
                     }
                 },
                 "serve":
